@@ -1,5 +1,4 @@
 const assert = require('assert');
-const expect = require('chai').expect;
 require('chai').should();
 
 const BubbleSort = require('../src/sorting-algorithms/BubbleSort');

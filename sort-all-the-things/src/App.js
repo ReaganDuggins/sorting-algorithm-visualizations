@@ -2,6 +2,7 @@ import './App.css';
 import BarChart from './components/BarChart';
 
 import BubbleSort from './sorting-algorithms/BubbleSort';
+import CombSort from './sorting-algorithms/CombSort';
 import InsertionSort from './sorting-algorithms/InsertionSort';
 import SelectionSort from './sorting-algorithms/SelectionSort';
 
@@ -20,6 +21,12 @@ export default class App extends Component{
     setBubbleRef = (bubble) => {
         if(bubble){
             this.bubbleRef = bubble;
+        }
+    }
+
+    setCombRef = (comb) => {
+        if(comb){
+            this.combRef = comb;
         }
     }
 
@@ -49,10 +56,12 @@ export default class App extends Component{
             }
         }
         let bubble = new BubbleSort(numbers);
+        let comb = new CombSort(numbers);
         let insertion = new InsertionSort(numbers);
         let selection = new SelectionSort(numbers);
         this.setState({
             bubbleSort: bubble,
+            combSort: comb,
             insertionSort: insertion,
             selectionSort: selection
         });
@@ -66,6 +75,16 @@ export default class App extends Component{
         if(this.state.bubbleSort){
             return (
                 <BarChart chartData={this.state.bubbleSort} ref={this.setBubbleRef} title="Bubble Sort" sleep={this.sleep}></BarChart>
+            );
+        }
+        return <section></section>;
+    }
+
+    combSort = () => {
+        if(this.state.combSort){
+            console.log('kkkkk', this.state.combSort);
+            return (
+                <BarChart chartData={this.state.combSort} ref={this.setCombRef} title="Comb Sort" sleep={this.sleep}></BarChart>
             );
         }
         return <section></section>;
@@ -91,6 +110,7 @@ export default class App extends Component{
 
     sortAll = () => {
         this.bubbleRef.animate();
+        this.combRef.animate();
         this.insertionRef.animate();
         this.selectionRef.animate();
     }
@@ -100,6 +120,7 @@ export default class App extends Component{
             <section className="App">
                 <header className="App-header">
                     {this.bubbleSort()}
+                    {this.combSort()}
                     {this.insertionSort()}
                     {this.selectionSort()}
                     <button onClick={this.sortAll}>Sort All</button>
