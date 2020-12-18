@@ -1,17 +1,18 @@
 class BubbleSort {
 
     constructor(unsorted) {
-        this.unsorted = unsorted;
+        this.unsorted = unsorted.slice();
         this.steps = [];
         this.iterations = 0;
-        this.sorted = this.sortMe(unsorted);
+        this.sorted = unsorted.length > 0 ? this.sortMe(unsorted.slice()) : [];
+
     }
 
     sortMe = (numbers) => {
-        this.steps.push(numbers.slice());
-        if(numbers.length < 2) {
+        if(!numbers || numbers.length < 2) {
             return numbers;
         }
+        this.steps.push({numbers: numbers.slice(), focusIndices: []});
 
         for(let i = 0; i < numbers.length; i++) {
             let alreadySorted = true;
@@ -22,7 +23,10 @@ class BubbleSort {
                     numbers[j+1] = holder;
                     alreadySorted = false;
                 }
-                this.steps.push(numbers.slice());
+                this.steps.push({
+                    numbers: numbers.slice(),
+                    focusIndices: [j, j+1]
+                });
                 this.iterations++;
             }
             if(alreadySorted) {

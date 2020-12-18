@@ -3,8 +3,9 @@
 }
 
 .App-logo {
-  height: 40vmin;
   pointer-events: none;
+  height: 20%;
+  width: 20%;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -17,7 +18,8 @@
   background-color: #282c34;
   min-height: 100vh;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
@@ -35,4 +37,12 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.chart-holder {
+    color: whitesmoke;
+}
+
+.animating {
+    border: 1px solid red;
 }
