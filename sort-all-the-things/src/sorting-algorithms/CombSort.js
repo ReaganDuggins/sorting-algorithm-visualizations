@@ -14,7 +14,6 @@ class CombSort {
         this.steps.push({numbers: numbers.slice(), focusIndices: []});
         let gap = numbers.length > 2 ? numbers.length - 2 : 1;
         for(let i = 0; i < numbers.length; i++) {
-            console.log('heya!!!', i, gap, numbers.length);
             for(let j = 0; j + gap < numbers.length; j++) {
                 if(numbers[j] > numbers[j+gap]) {
                     let holder = numbers[j];

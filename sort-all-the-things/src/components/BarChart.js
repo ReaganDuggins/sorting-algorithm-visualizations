@@ -90,7 +90,7 @@ export default class BarChart extends Component {
 
         return this.state.chart.data.datasets[0].backgroundColor.map(
             (color, i) => {
-                return (i === foci[0] || i === foci[1]) 
+                return (foci.includes(i)) 
                     ? '#cc0000' 
                     : '#555555';
             }
@@ -105,7 +105,7 @@ export default class BarChart extends Component {
 
     reset = () => {
         this.state.chart.data.datasets[0].data = this.props.chartData.steps[0].numbers;
-            this.state.chart.update();
+        this.state.chart.update();
     }
 
     animatingAnimation = () => {
